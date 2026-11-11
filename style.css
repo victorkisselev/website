@@ -1,0 +1,149 @@
+:root {
+    --bg: #919191;
+    --card: #8a8a8a;
+    --text: rgb(41, 41, 41);
+    --light: #ffffff;
+    --radius: 10px;
+    --glow: rgba(255, 255, 255, 0.5);
+    --glow-hover: rgba(255, 255, 255, 0.75);
+    --speed: 0.1s ease;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--bg);
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 1.5em;
+}
+
+h1,
+h2 {
+    margin: 0;
+    font-weight: bold;
+    color: var(--text);
+    text-shadow: 2.5px 2.5px 10px var(--glow);
+}
+
+h1 {
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+}
+
+h2 {
+    margin-bottom: 0.5em;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+p {
+    margin: 0;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    color: var(--text);
+}
+
+section {
+    margin: 5%;
+    padding: 3%;
+    border-radius: var(--radius);
+    background-color: var(--card);
+    box-shadow: 0 0 75px 15px var(--glow);
+    transition: box-shadow var(--speed), transform var(--speed);
+}
+
+section:hover {
+    box-shadow: 0 0 80px 15px var(--glow-hover);
+    transform: translate(2.5px, -2.5px);
+}
+
+#profile {
+    display: grid;
+    grid-template-columns: minmax(0, 300px) 1fr;
+    align-items: center;
+    column-gap: 3%;
+}
+
+#portrait {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+
+#summary {
+    padding: 1%;
+}
+
+#description {
+    margin-top: 0.25em;
+}
+
+#contact h2 {
+    text-align: center;
+}
+
+.sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.social-icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--text);
+    color: var(--light);
+    box-shadow: 0 0 20px 2px var(--glow);
+    transition: place-items var(--speed), background-color var(--speed), color var(--speed), box-shadow var(--speed), transform var(--speed);
+}
+
+.social-icon svg {
+    width: 60%;
+    height: 60%;
+    fill: currentColor;
+}
+
+.social-icon:hover,
+.social-icon:focus-visible {
+    place-items: center;
+    background-color: var(--light);
+    color: var(--text);
+    box-shadow: 0 0 80px 15px var(--glow-hover);
+    transform: translate(2.5px, -2.5px);
+}
+
+.social-icon:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    #profile {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 1rem;
+        text-align: center;
+    }
+
+    #portrait {
+        max-width: 240px;
+    }
+
+    .social-icon {
+        width: 48px;
+        height: 48px;
+    }
+}
