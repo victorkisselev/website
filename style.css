@@ -1,7 +1,9 @@
 :root {
     --bg: #919191;
-    --card: #8a8a8a;
+    --section: #8a8a8a;
+    --card: #a9a9a9;
     --text: rgb(41, 41, 41);
+    --text-secondary: rgb(75, 75, 75);
     --light: #ffffff;
     --radius: 10px;
     --glow: rgba(255, 255, 255, 0.5);
@@ -44,11 +46,15 @@ p {
     color: var(--text);
 }
 
+.b {
+    display: none;
+}
+
 section {
     margin: 5%;
     padding: 3%;
     border-radius: var(--radius);
-    background-color: var(--card);
+    background-color: var(--section);
     box-shadow: 0 0 75px 15px var(--glow);
     transition: box-shadow var(--speed), transform var(--speed);
 }
@@ -56,6 +62,9 @@ section {
 section:hover {
     box-shadow: 0 0 80px 15px var(--glow-hover);
     transform: translate(2.5px, -2.5px);
+    > .b {
+        display: block;
+    }
 }
 
 #profile {
@@ -99,15 +108,16 @@ section:hover {
 }
 
 .social-icon {
+    text-decoration: none;
     display: grid;
     place-items: center;
-    width: 56px;
-    height: 56px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     background-color: var(--text);
     color: var(--light);
     box-shadow: 0 0 20px 2px var(--glow);
-    transition: place-items var(--speed), background-color var(--speed), color var(--speed), box-shadow var(--speed), transform var(--speed);
+    transition: place-items var(--speed), background-color var(--speed), color var(--speed), box-shadow var(--speed), transform var(--speed), width var(--speed), border-radius var(--speed);
 }
 
 .social-icon svg {
@@ -116,18 +126,99 @@ section:hover {
     fill: currentColor;
 }
 
-.social-icon:hover,
+.bigger svg{
+    width: 80%;
+    height: 80%;
+}
+
+.social-icon:hover {
+    place-items: center;
+    background-color: var(--light);
+    color: var(--text);
+    box-shadow: 0 0 80px 15px var(--glow-hover);
+    transform: translate(2.5px, -2.5px);
+    width: 200px;
+    border-radius: 10px;
+    > .b {
+        display: inline-block;
+        height: 30px;
+        margin-bottom: 5px;
+    }
+}
 .social-icon:focus-visible {
     place-items: center;
     background-color: var(--light);
     color: var(--text);
     box-shadow: 0 0 80px 15px var(--glow-hover);
     transform: translate(2.5px, -2.5px);
+    width: 200px;
+    border-radius: 10px;
+    > .b {
+        display: inline-block;
+        height: 30px;
+        margin-bottom: 5px;
+    }
 }
 
 .social-icon:focus-visible {
     outline: 2px solid var(--text);
     outline-offset: 3px;
+}
+
+.logo {
+    display: block;
+    margin: 0 0 0 -100px;
+    width: clamp(50px, 20vw, 200px);
+    aspect-ratio: 1 / 1;
+    max-width: 250px;
+}
+
+.cardphoto {
+    top: 0;
+    left: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    border-radius: 50% var(--radius) 50% var(--radius);
+}
+
+.content {
+    padding: 5px;
+    display: inline-block;
+    margin-left: 2%;
+    vertical-align: top;
+}
+
+.cardshow {
+    display: block;
+    width: 100%;
+    display: flex;
+}
+
+.card {
+    width: 100%;
+    background-color: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 0 75px 15px var(--glow);
+    padding: 1%;
+    height: auto;
+    transition: place-items var(--speed), background-color var(--speed), color var(--speed), box-shadow var(--speed), transform var(--speed), width var(--speed), border-radius var(--speed)
+}
+
+.schoolSubtext {
+    color: var(--text-secondary);
+}
+
+.card:hover {
+    box-shadow: 0 0 80px 5px var(--glow-hover);
+    transform: translate(2.5px, -2.5px);
+    height: auto;
+    > .b {
+        display: block;
+    }
 }
 
 @media (max-width: 600px) {
